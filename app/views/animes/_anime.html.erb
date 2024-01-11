@@ -1,12 +1,19 @@
-<div id="<%= dom_id anime %>">
-  <p>
-    <strong>Title:</strong>
-    <%= anime.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= anime.description %>
-  </p>
-
+<div class="anime-container">
+  <div id="<%= dom_id anime %>">
+    <div class="card m-2" style="width: 19rem;">
+      <% if anime.image.attached? %>
+        <div class="custom-image-size">
+          <%= link_to anime_path(anime) do %>
+            <%= image_tag(anime.image, class: "card-img-top") %>
+          <% end %>
+        </div>
+      <% end %>
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= link_to anime.title, anime_path(anime) %>
+          </h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Original title</h6>
+        </div>
+    </div>
+  </div>
 </div>
