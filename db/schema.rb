@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_11_123804) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_11_131049) do
   create_table "anime_characters", force: :cascade do |t|
     t.integer "anime_id", null: false
     t.integer "character_id", null: false
@@ -25,6 +25,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_11_123804) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "anime_type"
+    t.string "genre"
+    t.integer "episodes"
   end
 
   create_table "characters", force: :cascade do |t|
