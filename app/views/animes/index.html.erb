@@ -1,12 +1,16 @@
-<%= link_to "New anime", new_anime_path , class:"mt-2 btn btn-primary"%>
+<%= link_to "New anime", new_anime_path, class: "mt-2 btn btn-primary" %>
 
 <div class="container mt-5">
   <div class="card">
     <div class="card-body">
       <h1 class="card-title">List Of All Anime</h1>
-      <div id="animes">
+      
+      
+      <div class="row">
         <% @animes.each do |anime| %>
-          <%= render anime %>
+          <div class="col-4 mb-4" id="anime-card">
+            <%= render anime %>
+          </div>
         <% end %>
       </div>
     </div>
