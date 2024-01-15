@@ -32,7 +32,7 @@
               <% if admin_signed_in? %>
                 <li><%= link_to "Sign out", destroy_admin_session_path, method: :delete, data: {turbo_method: :delete}, class: "dropdown-item" %></li>
               <% elsif user_signed_in? %>
-                <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+                <li><%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %></li>
               <% else %>
@@ -45,13 +45,12 @@
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <%= render 'animes/search'%>
     </div>
   </div>
 </nav>
+
+  
 
   <body>
   <div class="text-bg-dark p-3">

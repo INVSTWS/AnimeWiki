@@ -4,6 +4,7 @@ class AnimesController < ApplicationController
   # GET /animes or /animes.json
   def index
     @animes = Anime.all
+    @animes = @animes.where("title LIKE ?", "%#{params[:search_by_title]}%") if params[:search_by_title].present?
   end
 
   # GET /animes/1 or /animes/1.json
