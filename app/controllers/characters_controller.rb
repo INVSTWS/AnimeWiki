@@ -12,7 +12,8 @@ class CharactersController < ApplicationController
 
   # GET /characters/new
   def new
-    @character = Character.new
+    @anime = Anime.find(params[:anime_id])
+    @character = @anime.characters.new
   end
 
   # GET /characters/1/edit
@@ -21,18 +22,21 @@ class CharactersController < ApplicationController
 
   # POST /characters or /characters.json
   def create
-    @character = Character.new(character_params)
-
+    @anime = Anime.find(params[:anime_id])
+    @character = @anime.characters.new(character_params)
+  
     respond_to do |format|
       if @character.save
-        format.html { redirect_to character_url(@character), notice: "Character was successfully created." }
+        format.html { redirect_to anime_path(@anime), notice: 'Character was successfully created.' }
         format.json { render :show, status: :created, location: @character }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new }
         format.json { render json: @character.errors, status: :unprocessable_entity }
       end
     end
   end
+  
+  
 
   # PATCH/PUT /characters/1 or /characters/1.json
   def update

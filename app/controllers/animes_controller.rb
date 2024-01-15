@@ -10,7 +10,10 @@ class AnimesController < ApplicationController
   # GET /animes/1 or /animes/1.json
   def show
     @anime = Anime.find(params[:id])
+    @characters = @anime.characters
+    puts @characters.inspect
   end
+  
 
   # GET /animes/new
   def new

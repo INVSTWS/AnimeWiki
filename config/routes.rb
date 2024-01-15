@@ -7,10 +7,12 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  resources :characters
-  resources :animes
-
   
+  resources :characters
+  resources :animes do
+    resources :characters
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

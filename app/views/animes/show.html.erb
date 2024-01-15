@@ -35,6 +35,15 @@
         <h3>Описание</h3>
         <p class="card-text"><%= @anime.description%></p>
       </div>
+      <hr>
+<div class="related-characters">
+  <h3>Связанное</h3>
+  <% @anime.characters.each do |character| %>
+    <%= character.name %>
+  <% end %>
+  <%= link_to "New Character", new_anime_character_path(anime_id: @anime.id) %>
+</div>
+
 
       <hr>
     </div>   

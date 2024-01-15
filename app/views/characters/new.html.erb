@@ -1,8 +1,23 @@
 <h1>New character</h1>
 
-<%= render "form", character: @character %>
+<%= form_with(url: anime_characters_path(@anime), method: :post, local: true) do |form| %>
+  <%= form.hidden_field :anime_id, value: @anime.id %>
 
-<br>
+  <div class="field">
+    <%= form.label :character_name %>
+    <%= form.text_field 'character[name]', id: 'character_name' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :character_description %>
+    <%= form.text_area 'character[description]', id: 'character_description' %>
+  </div>
+
+  <%= form.submit "Create Character", class: "btn btn-primary" %>
+<% end %>
+
+
+
 
 <div>
   <%= link_to "Back to characters", characters_path %>
