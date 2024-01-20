@@ -1,4 +1,5 @@
 class CharactersController < ApplicationController
+  before_action :set_anime
   before_action :set_character, only: %i[ show edit update destroy ]
 
   # GET /characters or /characters.json
@@ -21,11 +22,11 @@ class CharactersController < ApplicationController
 
   # POST /characters or /characters.json
   def create
-    @character = Character.new(character_params)
+    @character = @anime.characters.build(character_params)
 
     respond_to do |format|
       if @character.save
-        format.html { redirect_to character_url(@character), notice: "Character was successfully created." }
+        format.html { redirect_to anime_path(@anime), notice: "Character was successfully created." }
         format.json { render :show, status: :created, location: @character }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -59,6 +60,10 @@ class CharactersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_anime
+      @anime = Anime.find(params[:anime_id])
+    end
+    
     def set_character
       @character = Character.find(params[:id])
     end

@@ -1,12 +1,5 @@
-<div id="<%= dom_id character %>">
-  <p>
-    <strong>Name:</strong>
-    <%= character.name %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= character.description %>
-  </p>
-
-</div>
+  <% @anime.characters.each do |character|%>
+    <strong>
+      <p><%= character.name%></p>
+    </strong>
+  <%end%>

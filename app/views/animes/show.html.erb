@@ -1,50 +1,71 @@
-<p style="color: green"><%= notice %></p>
+<!-- show.html.erb -->
 
-<div id="card-container">
+<p style="color: green;"><%= notice %></p>
+
+<div class="container" id="card-container">
   <div class="card">
-    <% if @anime.image.attached?%>
-      <div class = "custom-image-size">
-        <%= image_tag(@anime.image, class: "card-img-top") %>
-      </div>
-    <%end%>
-    <div class="card-body">
-        
-        <h5 class="card-title"><%= @anime.title %></h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">Original title</h6>
-
-        <hr>
-
-        <div class="anime-info">
-          <div class="row">
-            <dt class="col-6 col-sm-4 font-weight-normal text-gray-dark-6">Тип</dt>
-            <dd class="col-6 col-sm-8 mb-1"><%=@anime.anime_type%></dd>
-            <dt class="col-6 col-sm-4 font-weight-normal text-gray-dark-6">Эпизоды</dt>
-            <dd class="col-6 col-sm-8 mb-1"><%=@anime.episodes%></dd>
-            <dt class="col-6 col-sm-4 font-weight-normal text-gray-dark-6">Статус</dt>
-            <dd class="col-6 col-sm-8 mb-1"><%=@anime.status%></dd>
-            <dt class="col-6 col-sm-4 font-weight-normal text-gray-dark-6">Жанр</dt>
-            <dd class="col-6 col-sm-8 mb-1"><%=@anime.genre%></dd>
-            <dt class="col-6 col-sm-4 font-weight-normal text-gray-dark-6">Сезон</dt>
-            <dd class="col-6 col-sm-8 mb-1"><%=@anime.season%></dd>
-            <dt class="col-6 col-sm-4 font-weight-normal text-gray-dark-6">Выпуск</dt>
-            <dd class="col-6 col-sm-8 mb-1"><%=@anime.release_date%></dd>
+    <% if @anime.image.attached? %>
+      <div class="row">
+        <div class="col-md-4 m-2">
+          <div class="custom-image-size" id="cstm-img-size">
+            <%= image_tag(@anime.image, class: "card-img-top") %>
+          </div>
+          <br>
+          <div class="d-grid gap-2">
+            <%= link_to "Edit this anime", edit_anime_path(@anime), class: "btn btn-secondary" %>
+            <%= link_to "Back to animes", animes_path, class: "btn btn-primary" %>
+            <%= button_to "Destroy this anime", @anime, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
           </div>
         </div>
 
-      <div class="anime-description mt-5">
-        <h3>Описание</h3>
-        <p class="card-text"><%= @anime.description%></p>
+        <div class="col-md-7">
+            <div class="card-body">
+              <div class="anime-info m-2">
+                <div class="row">
+                  <div class="col-sm-auto justify-content-center">
+                    <h1 class="card-title"><%= @anime.title %></h1>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Original title</h6>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <%= render 'characters/info'%>
+        </div>
       </div>
 
-      <hr>
-    </div>   
+
+        <div class="ms-2">
+          <div class="anime-description mt-5">
+           <h3>Описание</h3>
+           <p class="card-text"><%= @anime.description %></p>
+          </div>
+        </div>
+         <hr>
+
+         <div class="m-2">
+           <h3>Связанное</h3>
+           <%= render 'characters/character' %>
+         </div>
+
+
+         <div class="accordion" id="accordionExample">
+           <div class="accordion-item">
+             <h2 class="accordion-header">
+               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                 Create
+               </button>
+             </h2>
+             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+               <div class="accordion-body">
+                 <%= render 'characters/form' %>
+               </div>
+             </div>
+           </div>
+         </div>
+      </div>
+    <%end%>
+    </div>
   </div>
-</div>
-
-<div>
-  <%= link_to "Edit this anime", edit_anime_path(@anime) %> |
-  <%= link_to "Back to animes", animes_path %>
-
-  <%= button_to "Destroy this anime", @anime, method: :delete, data: { confirm: 'Are you sure?' } %>
-
 </div>

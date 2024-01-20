@@ -27,7 +27,7 @@ class AnimesController < ApplicationController
 
     respond_to do |format|
       if @anime.save
-        format.html { redirect_to anime_url(@anime), notice: "Anime was successfully created." }
+        format.html { redirect_to anime_path(@anime), notice: "Anime was successfully created." }
         format.json { render :show, status: :created, location: @anime }
       else
         format.html { render :new, status: :unprocessable_entity }
