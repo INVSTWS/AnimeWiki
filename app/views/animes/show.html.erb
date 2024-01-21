@@ -35,22 +35,22 @@
         </div>
       </div>
 
-
-        <div class="ms-2">
-          <div class="anime-description mt-5">
+      <hr>
+        <div class="m-2">
+          <div class="anime-description mt-2 mb-2">
            <h3>Описание</h3>
            <p class="card-text"><%= @anime.description %></p>
           </div>
         </div>
          <hr>
 
-         <div class="m-2">
-           <h3>Связанное</h3>
+         <div class="mt-2">
+           <h3>Связанные персонажи</h3>
            <%= render 'characters/character' %>
          </div>
 
 
-         <div class="accordion" id="accordionExample">
+         <div class="accordion mt-5" id="accordionExample">
            <div class="accordion-item">
              <h2 class="accordion-header">
                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">

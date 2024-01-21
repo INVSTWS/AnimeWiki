@@ -40,7 +40,7 @@ class AnimesController < ApplicationController
   def update
     respond_to do |format|
       if @anime.update(anime_params)
-        format.html { redirect_to anime_url(@anime), notice: "Anime was successfully updated." }
+        format.html { redirect_to anime_path(@anime), notice: "Anime was successfully updated." }
         format.json { render :show, status: :ok, location: @anime }
       else
         format.html { render :edit, status: :unprocessable_entity }

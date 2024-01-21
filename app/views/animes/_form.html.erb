@@ -1,7 +1,7 @@
 <%= form_with(model: anime) do |form| %>
   <% if anime.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(anime.errors.count, "error") %> prohibited this anime from being saved:</h2>
+      <h2><%= pluralize(anime.errors.count, "error") %> You have made something wrong. There are some requirements:</h2>
 
       <ul>
         <% anime.errors.each do |error| %>
@@ -21,7 +21,7 @@
 
     <div>
       <%= form.label :anime_type, style: "display: block" %>
-      <%= form.text_field :anime_type, class: "form-control", placeholder: "Type" %>
+      <%= form.select(:anime_type, options_for_select(["Фильм", "ТВ Сериал", "OVA"]), { prompt: 'Select Status' }, class:"form-select") %>
     </div>
 
     <div>
@@ -31,7 +31,7 @@
 
     <div>
       <%= form.label :status, style: "display: block" %>
-      <%= form.text_field :status, class: "form-control", placeholder: "Status" %>
+      <%= form.select(:status, options_for_select(["Вышел", "Онгоинг"]), { prompt: 'Select Status' }, class:"form-select") %>
     </div>
 
     <div>

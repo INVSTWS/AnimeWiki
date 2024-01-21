@@ -1,0 +1,17 @@
+<div class="col">
+  <div class="card">
+    <% if character && character.image.attached? %>
+      <%= link_to anime_character_path(@anime, character) do %>
+        <%= image_tag(character.image, class: "card-img-top", style: "height:100px", alt: character.name) %>
+      <% end %>
+      <div class="card-body">
+        <% if character.present? %>
+          <h5 class="card-title"><%= character.name %></h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <% else %>
+          <p class="card-text">Character data not available.</p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

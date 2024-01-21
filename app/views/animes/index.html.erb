@@ -6,7 +6,7 @@
       <h1 class="card-title">List Of All Anime</h1>
       
       
-      <div class="row">
+      <div class="row row-cols-3">
         <% @animes.each do |anime| %>
           <div class="col-4 mb-4" id="anime-card">
             <%= render anime %>

@@ -1,10 +1,24 @@
 <h1>Editing character</h1>
 
-<%= render "form", character: @character %>
+<%= form_for [@anime, @character], url: anime_character_path(@anime, @character), method: :patch do |form| %>
 
-<br>
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
 
-<div>
-  <%= link_to "Show this character", @character %> |
-  <%= link_to "Back to characters", characters_path %>
-</div>
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
